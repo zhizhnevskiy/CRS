@@ -1,0 +1,93 @@
+@import './variables/layout.scss';
+@import './variables/color-palette.scss';
+@import './variables/fonts.scss';
+@import './components/header.scss';
+@import './components/button.scss';
+@import './components/content.scss';
+@import './components/shared-card.scss';
+@import './components/footer.scss';
+
+* {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+ul {
+  padding: 0;
+}
+
+.f-24 {
+  font-size: 24px;
+}
+
+.description {
+  color: map-get($map: $black-palette, $key: 200);
+}
+
+.link {
+  color: $blue-color;
+}
+
+html {
+  position: relative;
+}
+body {
+  color: $black-color;
+  font-family: $main-font;
+  font-size: $main-font-size-lg;
+  margin: 0;
+  background-image: url('../assets/svg/main-page/background.svg');
+}
+
+.side-img {
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+@media screen and (max-width: $media-screen-l) {
+  body {
+    font-size: $main-font-size-md;
+  }
+}
+
+@media screen and (max-width: $media-screen-md) {
+  .side-img {
+    display: none;
+  }
+  .f-24 {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: $media-screen-m) {
+  body {
+    font-size: $main-font-size-md;
+  }
+  .f-24 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: $media-screen-s) {
+  body {
+    font-size: $main-font-size-md;
+  }
+  .f-24 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: $media-screen-sm) {
+  body {
+    font-size: $main-font-size-md;
+  }
+}

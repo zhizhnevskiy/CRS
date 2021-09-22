@@ -1,0 +1,107 @@
+@import '../../scss/variables/fonts.scss';
+@import '../../scss/variables/color-palette.scss';
+@import '../variables/layout.scss';
+
+#content {
+  padding-right: $padding-lg-right;
+  padding-left: $padding-lg-left;
+  margin-top: 220px;
+  & > * {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    &:first-of-type {
+      padding-top: 0;
+    }
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+  }
+  .first-title {
+    font-size: 64px;
+    margin-bottom: 32px;
+  }
+  .second-title {
+    font-size: 54px;
+    margin-bottom: 32px;
+  }
+  .subtitle {
+    color: map-get($map: $black-palette, $key: 200);
+    font-family: $second-font;
+  }
+}
+
+@media screen and (max-width: $media-screen-lm) {
+  #content {
+    padding-right: $padding-lm-right;
+    padding-left: $padding-lm-left;
+  }
+}
+
+@media screen and (max-width: $media-screen-l) {
+  #content {
+    padding-right: $padding-l-right;
+    padding-left: $padding-l-left;
+    margin-top: 160px;
+    .first-title {
+      font-size: 48px;
+    }
+    .second-title {
+      font-size: 36px;
+    }
+  }
+}
+
+@media screen and (max-width: $media-screen-md) {
+  #content {
+    padding-right: $padding-md-right;
+    padding-left: $padding-md-left;
+    margin-top: 120px;
+    .first-title {
+      font-size: 42px;
+    }
+    .second-title {
+      font-size: 32px;
+    }
+  }
+}
+
+@media screen and (max-width: $media-screen-m) {
+  #content {
+    padding-right: $padding-m-right;
+    padding-left: $padding-m-left;
+    margin-top: 100px;
+    .first-title {
+      font-size: 36px;
+    }
+    .second-title {
+      font-size: 28px;
+    }
+  }
+}
+
+@media screen and (max-width: $media-screen-s) {
+  #content {
+    padding-right: $padding-s-right;
+    padding-left: $padding-s-left;
+
+    .first-title {
+      font-size: 32px;
+    }
+    .second-title {
+      font-size: 26px;
+    }
+  }
+}
+@media screen and (max-width: $media-screen-sm) {
+  #content {
+    padding-right: $padding-sm-right;
+    padding-left: $padding-sm-left;
+    margin-top: 70px;
+    .first-title {
+      font-size: 28px;
+    }
+    .second-title {
+      font-size: 24px;
+    }
+  }
+}

@@ -1,0 +1,192 @@
+@import '../../scss/variables/fonts.scss';
+@import '../../scss/variables/color-palette.scss';
+@import '../variables/layout.scss';
+
+$avatar-width-lg: 160px;
+$avatar-width-sm: 100px;
+
+.contact-container {
+  .header-contact {
+    display: flex;
+    .text-container {
+      flex: 6;
+    }
+    .spacer {
+      flex: 4;
+    }
+  }
+  .info-container {
+    margin-top: 80px;
+    color: map-get($map: $black-palette, $key: 200);
+    display: flex;
+    .info {
+      flex: 4;
+      display: flex;
+      flex-direction: column;
+      .address {
+        display: flex;
+        align-items: center;
+        .text {
+          flex: 1;
+          font-weight: bold;
+          .bottom {
+            margin-top: 10px;
+          }
+        }
+        .line-container {
+          flex: 1;
+          .line {
+            width: 100%;
+            height: 4px;
+            background-color: map-get($map: $black-palette, $key: 200);
+          }
+        }
+      }
+      .contact {
+        margin: 43px 0;
+        .contact-item {
+          &:first-of-type {
+            margin-bottom: 30px;
+          }
+          .label {
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+    .map {
+      box-shadow: -8px 5px 17px 4px rgba(0, 0, 0, 0.61);
+      margin-left: 40px;
+      flex: 6;
+    }
+  }
+}
+
+.staff-container {
+  padding-left: 100px;
+  padding-right: 100px;
+  color: map-get($map: $black-palette, $key: 200);
+  border-bottom: 6px dotted map-get($map: $black-palette, $key: 50);
+  .subtitle-link {
+    font-weight: bold;
+    color: $blue-color;
+  }
+  .staff-cards-list {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    .card-item {
+      margin: 30px 20px;
+      display: flex;
+      .avatar {
+        max-width: $avatar-width-lg;
+        flex: 1;
+        img {
+          width: $avatar-width-lg;
+          height: $avatar-width-lg;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+      .info {
+        margin-left: 36px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        .name {
+          font-weight: bold;
+          font-family: $main-font;
+          color: map-get($map: $black-palette, $key: 300);
+          margin-bottom: 16px;
+        }
+        .person-contact {
+          & > * {
+            margin: 5px 0;
+          }
+          .blue {
+            color: $blue-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $media-screen-md) {
+  .staff-container {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: $media-screen-m) {
+  .contact-container {
+    .header-contact {
+      .text-container {
+        flex: 1;
+      }
+      .spacer {
+        flex: 0;
+      }
+    }
+    .info-container {
+      flex-direction: column;
+
+      .info {
+        margin-bottom: 30px;
+        .address {
+          .text {
+            flex: 6;
+          }
+          .line-container {
+            flex: 4;
+          }
+        }
+      }
+    }
+    .map {
+      max-width: 100%;
+      iframe {
+        width: 100%;
+      }
+      margin-left: 0 !important;
+    }
+  }
+  .staff-container {
+    padding-left: 30px;
+    padding-right: 30px;
+    .staff-cards-list {
+      grid-template-columns: 100%;
+      .card-item {
+        flex-direction: column;
+        align-items: center;
+        .avatar {
+          img {
+            width: $avatar-width-sm;
+            height: $avatar-width-sm;
+          }
+        }
+        .info {
+          margin-top: 16px;
+          margin-left: 0;
+          .name {
+            text-align: center;
+            font-size: 18px;
+          }
+          .person-contact {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $media-screen-s) {
+  .staff-container {
+    padding: 0;
+  }
+}
