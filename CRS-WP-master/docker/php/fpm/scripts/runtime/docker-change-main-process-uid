@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+shopt -s dotglob
+
+DOCKER_MAIN_USER=${1:-""}
+NEW_UID=${2:-""}
+
+if [[ ${CHANGE_UID:-0} != 1 ]]; then
+  exit
+fi
+
+# Change user id on the fly
+if [[ "$(id -u)" != '0' ]]; then
+  exit
+fi
+
+if [[ -z "${DOCKER_MAIN_USER}" && -z "${NEW_UID}" ]]; then
+  exit
+fi
+
+if [[ -n "${DOCKER_MAIN_USER}" && -z "${NEW_UID}" ]]; then
+  echo "NEW_UID has to be specified along with DOCKER_MAIN_USER"
+  exit 1
+fi
+
+if [[ -z "${DOCKER_MAIN_USER}" && -n "${NEW_UID}" ]]; then
+  echo "DOCKER_MAIN_USER has to be specified along with NEW_UID"
+  exit 1
+fi
+
+if [[ ! ${NEW_UID} =~ ^[0-9]+$ ]]; then
+  echo "NEW_UID has to be integer"
+  exit 1
+fi
+
+# if root
+if [[ "$(id -u "${NEW_UID}" 2>/dev/null)" == 0 ]]; then
+  echo "You can't change uid of root"
+  exit 1
+fi
+
+# if user DOCKER_MAIN_USER doesn't exists in container
+if [[ "$(id -un "${DOCKER_MAIN_USER}" 2>/dev/null)" != "${DOCKER_MAIN_USER}" ]]; then
+  echo "User with name [${DOCKER_MAIN_USER}] doesn't exists"
+  exit 1
+fi
+
+# if group DOCKER_MAIN_USER doesn't exists in container
+if [[ "$(getent group "${DOCKER_MAIN_USER}" | cut -d: -f1)" != "${DOCKER_MAIN_USER}" ]]; then
+  echo "Group with name [${DOCKER_MAIN_USER}] doesn't exists"
+  exit 1
+fi
+
+# if it already fits
+if [[ "$(id -u "${DOCKER_MAIN_USER}")" == "${NEW_UID}" && "$(getent group "${DOCKER_MAIN_USER}" | cut -d: -f3)" == "${NEW_UID}" ]]; then
+  exit
+fi
+
+# if NEW_UID exists
+if [[ "$(id -u "${NEW_UID}" 2>/dev/null)" == "${NEW_UID}" ]]; then
+  echo "NEW_UID:[${NEW_UID}] is already occupied by $(grep "${NEW_UID}" /etc/passwd)"
+  exit 1
+fi
+
+# store home dir of the user
+HOME_DIR="$(grep "${DOCKER_MAIN_USER}" /etc/passwd | cut -d: -f6)"
+
+# change home dir to avoid of changing ownership automatically
+mkdir -p /tmp/home
+usermod -d /tmp/home "${DOCKER_MAIN_USER}"
+
+# change user id and group id to new one
+usermod -u "${NEW_UID}" "${DOCKER_MAIN_USER}"
+groupmod -g "${NEW_UID}" "${DOCKER_MAIN_USER}"
+
+if [[ -n "${HOME_DIR}" ]]; then
+  # change home dir back
+  usermod -d "${HOME_DIR}" "${DOCKER_MAIN_USER}"
+
+  set +e
+  # fixing permissions for home folder and its direct children
+  # shellcheck disable=SC2086
+  chown "${DOCKER_MAIN_USER}":"${DOCKER_MAIN_USER}" ${HOME_DIR}
+  chown "${DOCKER_MAIN_USER}":"${DOCKER_MAIN_USER}" ${HOME_DIR}/* 2>/dev/null
+  set -e
+fi
+
+rm -rf /tmp/home

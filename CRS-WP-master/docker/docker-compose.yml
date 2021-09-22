@@ -1,0 +1,107 @@
+version: "3.7"
+
+x-debug-settings: &xdebug-settings
+  XDEBUG_CLIENT_HOST: ${XDEBUG_CLIENT_HOST}
+  XDEBUG_CLIENT_PORT: ${XDEBUG_CLIENT_PORT}
+  XDEBUG_MODE: ${XDEBUG_MODE}
+  XDEBUG_START_WITH_REQUEST: ${XDEBUG_START_WITH_REQUEST}
+  XDEBUG_TRIGGER: ${XDEBUG_TRIGGER}
+  XDEBUG_LOG_FILE: ${XDEBUG_LOG_FILE}
+  XDEBUG_LOG_LEVEL: ${XDEBUG_LOG_LEVEL}
+
+x-volumes-list:
+  - &app-sources ${HOST_SRC_PATH}:${CONTAINER_SRC_PATH}
+
+services:
+  nginx:
+    image: iamdb/nginx-bedrock-wordpress
+    container_name: ${COMPOSE_PROJECT_NAME}_nginx_bedrock
+    working_dir: ${CONTAINER_SRC_PATH}
+    ports:
+      - 127.0.0.1:80:80
+      - 127.0.0.1:443:443
+    networks:
+      - docker_net
+    volumes:
+      - *app-sources
+    environment:
+      ALLOW_INSTALL: "yes"
+#    command: [nginx-debug, '-g', 'daemon off;']
+
+  fpm:
+    build:
+      context: ./php/fpm
+      dockerfile: ./alpine.Dockerfile
+      target: development
+      args:
+        PHP_VERSION: 7.4.15
+    container_name: ${COMPOSE_PROJECT_NAME}_fpm
+    working_dir: ${CONTAINER_SRC_PATH}
+    networks:
+      - docker_net
+    environment:
+      <<: *xdebug-settings
+      TIMEZONE: ${TIMEZONE:-Europe/Minsk}
+      CHANGE_UID: ${CHANGE_UID:-1}
+      HOST_USER_ID: ${HOST_USER_ID:?It seems you forgot to set "HOST_USER_ID" in .env}
+      # Wordpress settings
+      DB_HOST: mysql
+      DB_NAME: ${DATABASE_NAME}
+      DB_USER: ${DATABASE_USER}
+      DB_PASSWORD: ${DATABASE_PASSWORD}
+      WP_ENV: development
+      WP_HOME: http://localhost
+      WP_SITEURL: http://localhost:${WEB_PORT}/wp
+    volumes:
+      - *app-sources
+      - composer-cache:/var/www/.composer
+      - ./php/fpm/assets/php.override.ini:/usr/local/etc/php/conf.d/php.ini
+
+  mysql:
+    image: mysql:5.7
+    container_name: ${COMPOSE_PROJECT_NAME}_mysql
+    environment:
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+    networks:
+      - docker_net
+    working_dir: /docker-entrypoint-initdb.d
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+    command: >
+      --general-log=1
+      --general-log-file=/var/log/mysql/query.log
+      --sql-mode="NO_ENGINE_SUBSTITUTION"
+
+  wp-cli:
+    image: wordpress:cli
+    networks:
+      - docker_net
+    working_dir: ${CONTAINER_SRC_PATH}
+    environment:
+      # Wordpress settings
+      DB_HOST: mysql
+      DB_NAME: ${DATABASE_NAME}
+      DB_USER: ${DATABASE_USER}
+      DB_PASSWORD: ${DATABASE_PASSWORD}
+      WP_ENV: development
+      WP_HOME: http://localhost
+      WP_SITEURL: http://localhost:${WEB_PORT}/wp
+    volumes:
+      - *app-sources
+    command: /bin/true
+
+volumes:
+  db-data:
+    name: ${COMPOSE_PROJECT_NAME}_db_data
+  composer-cache:
+    name: ${COMPOSE_PROJECT_NAME}_composer_cache
+
+networks:
+  docker_net:
+    name: ${COMPOSE_PROJECT_NAME}_network
+    ipam:
+      driver: default

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# if root
+if [[ "$(id -u)" == '0' ]]; then
+
+  # changing timezone
+  docker-change-timezone "${TIMEZONE:-"Europe/Minsk"}"
+
+  # trying to change user id of main work process
+  docker-change-main-process-uid node "${HOST_USER_ID:-1000}"
+
+  exec gosu node "$@"
+fi
+
+exec "$@"
