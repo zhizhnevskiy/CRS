@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -eou pipefail
+shopt -s dotglob
+
+
+# find script directory and navigate to it to make relative paths work
+SCRIPT_PATH=$(
+  cd "$(dirname "$0")" || exit 1
+  pwd -P
+)
+cd "${SCRIPT_PATH}/docker" || {
+  echo "Can't navigate to script directory"
+  exit 1
+}
+
+docker-compose -f docker-compose.gutenberg.yml run node bash
