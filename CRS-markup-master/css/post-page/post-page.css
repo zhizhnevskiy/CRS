@@ -1,0 +1,107 @@
+#content {
+  position: relative;
+}
+#content .back-button {
+  position: absolute;
+  left: 270px;
+  top: 15px;
+}
+#content .back-button a {
+  color: #2543de;
+  text-decoration: none;
+}
+#content .post-container {
+  padding: 0 250px;
+}
+#content .post-container .post-date {
+  color: #b2b2b2;
+  font-family: "Open Sans", sans-serif;
+}
+#content .post-container .image {
+  width: 100%;
+  margin: 40px 0;
+  display: block;
+  object-fit: cover;
+}
+#content .post-container .post-links .post-link-text {
+  color: #b2b2b2;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  margin-right: 10px;
+}
+#content .post-container .post-links .post-link {
+  text-decoration: none;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  width: 40px;
+}
+#content .post-container .post-links .post-link.facebook-link {
+  background: blue;
+}
+#content .post-container .post-links .post-link.linkedin-link {
+  background: #2d2d77;
+}
+#content .post-container .post-links .post-link.twitter-link {
+  background: #7d7ddb;
+}
+#content .post-container .post-links .post-link.whatsapp-link {
+  background: green;
+}
+#content .post-container .description-container {
+  margin-top: 25px;
+  font-family: "Open Sans", sans-serif;
+  color: #434343;
+}
+#content .post-container .description-container .paragraph {
+  margin: 25px 0;
+}
+#content .post-container .description-container .description-title {
+  font-family: century-gothic, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+#content .post-container .description-container ul,
+#content .post-container .description-container .list {
+  margin-left: 50px;
+}
+#content .post-container .description-container .author-contact .name {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1700px) {
+  #content .back-button {
+    left: 200px;
+  }
+  #content .post-container {
+    padding: 0 150px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  #content .back-button {
+    left: 150px;
+  }
+  #content .post-container {
+    padding: 0 100px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  #content .back-button {
+    left: 100px;
+  }
+}
+@media screen and (max-width: 900px) {
+  #content {
+    flex-direction: column;
+  }
+  #content .back-button {
+    left: 0;
+    position: relative;
+    padding-bottom: 30px;
+  }
+  #content .post-container {
+    padding: 0;
+  }
+}
