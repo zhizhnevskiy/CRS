@@ -1,0 +1,96 @@
+.services-list-container {
+  display: flex;
+}
+.services-list-container .services {
+  flex: 1;
+  margin-right: 40px;
+}
+.services-list-container .services .services-list {
+  list-style-type: none;
+  font-family: "Open Sans", sans-serif;
+}
+.services-list-container .services .services-list .list-item {
+  position: relative;
+  padding: 20px 0;
+}
+.services-list-container .services .services-list .list-item .date {
+  color: #b2b2b2;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.services-list-container .services .services-list .list-item .title {
+  font-family: century-gothic, sans-serif;
+  font-weight: bold;
+  color: #434343;
+}
+.services-list-container .services .services-list .list-item::before, .services-list-container .services .services-list .list-item::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+}
+.services-list-container .services .services-list .list-item::after {
+  width: 100%;
+  background-color: #d2d2d2;
+}
+.services-list-container .services .services-list .list-item::before {
+  z-index: 1;
+  background-color: #a600c0;
+  width: 10%;
+}
+.services-list-container .services #pagination {
+  display: flex;
+}
+.services-list-container .services #pagination .page-numbers {
+  border: 1px solid #cccccc;
+  color: #333333;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 14px;
+  margin-right: 2px;
+  transition: background-color 0.2s ease-in-out;
+}
+.services-list-container .services #pagination .page-numbers:last-of-type {
+  margin-right: 0;
+}
+.services-list-container .services #pagination .page-numbers.active, .services-list-container .services #pagination .page-numbers:hover {
+  background-color: #333333;
+  color: #fff;
+}
+.services-list-container .services #pagination .page-numbers.dots {
+  border: none;
+  color: #434343;
+}
+.services-list-container .services #pagination .page-numbers.dots:hover {
+  background-color: transparent;
+}
+.services-list-container .img-container {
+  flex: 1;
+  display: flex;
+}
+.services-list-container .img-container img {
+  width: 100%;
+  display: block;
+}
+
+@media screen and (max-width: 1100px) {
+  .services-list-container {
+    flex-direction: column;
+  }
+  .services-list-container .img-container {
+    margin-top: 100px;
+  }
+  .services-list-container .services {
+    margin-right: 0;
+  }
+  .services-list-container .services #pagination {
+    flex-wrap: wrap;
+  }
+}

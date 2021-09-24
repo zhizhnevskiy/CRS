@@ -1,0 +1,101 @@
+@import '../variables/color-palette.scss';
+@import '../variables/fonts.scss';
+@import '../variables/layout.scss';
+.services-list-container {
+  display: flex;
+  .services {
+    flex: 1;
+    margin-right: 40px;
+    .services-list {
+      list-style-type: none;
+      font-family: $second-font;
+      .list-item {
+        position: relative;
+        padding: 20px 0;
+        .date {
+          color: map-get($map: $black-palette, $key: 50);
+          font-size: 14px;
+          font-weight: bold;
+          margin-bottom: 8px;
+        }
+        .title {
+          font-family: $main-font;
+          font-weight: bold;
+          color: map-get($map: $black-palette, $key: 200);
+        }
+        &::before,
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 1px;
+        }
+        &::after {
+          width: 100%;
+          background-color: #d2d2d2;
+        }
+        &::before {
+          z-index: 1;
+          background-color: $purple-color;
+          width: 10%;
+        }
+      }
+    }
+    #pagination {
+      display: flex;
+      .page-numbers {
+        border: 1px solid #cccccc;
+        color: #333333;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 14px;
+        margin-right: 2px;
+        transition: background-color 0.2s ease-in-out;
+        &:last-of-type {
+          margin-right: 0;
+        }
+        &.active,
+        &:hover {
+          background-color: #333333;
+          color: #fff;
+        }
+        &.dots {
+          border: none;
+          color: map-get($map: $black-palette, $key: 200);
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+  .img-container {
+    flex: 1;
+    display: flex;
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+}
+
+@media screen and(max-width: $media-screen-md) {
+  .services-list-container {
+    flex-direction: column;
+    .img-container {
+      margin-top: 100px;
+    }
+    .services {
+      margin-right: 0;
+      #pagination {
+        flex-wrap: wrap;
+      }
+    }
+  }
+}

@@ -1,0 +1,198 @@
+.service-container {
+  display: flex;
+  align-items: center;
+}
+.service-container .text {
+  flex: 6;
+  padding-right: 50px;
+}
+.service-container .text .subtitle-bottom {
+  margin: 30px 0 40px;
+}
+.service-container .text .link-container a {
+  text-decoration: none;
+  position: relative;
+}
+.service-container .text .link-container a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: transparent linear-gradient(270deg, #0079c0 0%, #a600c0 100%) 0% 0% no-repeat padding-box;
+  height: 2px;
+  width: 100%;
+  margin-top: 6px;
+}
+.service-container .img-container {
+  flex: 4;
+  display: flex;
+  align-items: center;
+}
+.service-container .img-container img {
+  width: 100%;
+  display: block;
+}
+
+.service-padding-container {
+  padding: 0 270px;
+}
+.service-padding-container .description-block {
+  margin-bottom: 80px;
+}
+.service-padding-container .description-block:last-child {
+  margin-bottom: 0;
+}
+.service-padding-container .description-block .subheader,
+.service-padding-container .description-block p {
+  margin-top: 25px;
+}
+.service-padding-container .description-block .header,
+.service-padding-container .description-block h2 {
+  font-weight: normal;
+  font-family: century-gothic, sans-serif;
+  font-size: 24px;
+  position: relative;
+  padding: 15px 0;
+}
+.service-padding-container .description-block .header::after, .service-padding-container .description-block .header::before,
+.service-padding-container .description-block h2::after,
+.service-padding-container .description-block h2::before {
+  display: block;
+  content: "";
+  position: absolute;
+  height: 1px;
+  bottom: 0;
+}
+.service-padding-container .description-block .header::after,
+.service-padding-container .description-block h2::after {
+  width: 100%;
+  background-color: #dedede;
+}
+.service-padding-container .description-block .header::before,
+.service-padding-container .description-block h2::before {
+  z-index: 2;
+  width: 15%;
+  background-color: #b240c4;
+}
+.service-padding-container .description-block .first-level-list,
+.service-padding-container .description-block ul {
+  margin-left: 15px;
+}
+.service-padding-container .description-block .first-level-list .second-level-list,
+.service-padding-container .description-block .first-level-list ul,
+.service-padding-container .description-block ul .second-level-list,
+.service-padding-container .description-block ul ul {
+  margin-left: 45px;
+  list-style-type: disc;
+}
+.service-padding-container .description-block li {
+  margin: 5px 0;
+}
+.service-padding-container .description-block .wp-block-image {
+  margin: 0;
+  padding: 0;
+}
+.service-padding-container .description-block .img,
+.service-padding-container .description-block img {
+  width: 100%;
+  display: block;
+  margin-top: 40px;
+}
+.service-padding-container .button-container {
+  padding-top: 80px;
+}
+.service-padding-container .button-container button {
+  width: 100%;
+}
+
+.additional-services .title {
+  text-align: center;
+  font-size: 36px;
+  font-family: century-gothic, sans-serif;
+  font-weight: bold;
+  position: relative;
+  padding: 20px 0;
+}
+.additional-services .title::after {
+  width: 120px;
+  position: absolute;
+  content: "";
+  display: block;
+  left: 50%;
+  bottom: 0;
+  height: 2px;
+  background-color: #b240c4;
+  transform: translate(-50%, 0);
+}
+.additional-services .links {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.additional-services .links .link-item {
+  margin: 10px 0;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  display: flex;
+  border-radius: 8px;
+  border: 2px solid #b4caff;
+  padding: 0;
+}
+.additional-services .links .link-item a {
+  padding: 30px 20px;
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+  color: #000;
+  font-family: century-gothic, sans-serif;
+  font-weight: bold;
+}
+.additional-services .links .link-item.activated {
+  background-color: #b4caff;
+}
+.additional-services .links .link-item.activated a {
+  color: #fff;
+}
+
+@media screen and (max-width: 1920px) {
+  .service-padding-container {
+    padding: 0 200px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .service-padding-container {
+    padding: 0 150px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .service-container {
+    flex-direction: column;
+  }
+  .service-container .text {
+    padding-right: 0;
+  }
+  .service-container .img-container {
+    margin-top: 100px;
+  }
+
+  .service-padding-container {
+    padding: 0 60px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .service-container {
+    flex-direction: column;
+  }
+  .service-container .img-container {
+    margin-top: 60px;
+  }
+
+  .service-padding-container {
+    padding: 0;
+  }
+
+  .additional-services .title {
+    font-size: 28px;
+  }
+}
