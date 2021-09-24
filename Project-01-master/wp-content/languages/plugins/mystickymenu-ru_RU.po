@@ -1,0 +1,96 @@
+# Translation of Plugins - Floating Notification Bar, Sticky Menu on Scroll, and Sticky Header for Any Theme &#8211; myStickymenu - Stable (latest release) in Russian
+# This file is distributed under the same license as the Plugins - Floating Notification Bar, Sticky Menu on Scroll, and Sticky Header for Any Theme &#8211; myStickymenu - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-01-09 20:36:06+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: ru\n"
+"Project-Id-Version: Plugins - Floating Notification Bar, Sticky Menu on Scroll, and Sticky Header for Any Theme &#8211; myStickymenu - Stable (latest release)\n"
+
+#: mystickymenu.php:549
+msgid "CSS ID's and Classes to use:"
+msgstr "ID и классы CSS для использования:"
+
+#: mystickymenu.php:545
+msgid "Add/edit CSS style. Leave it blank for default style."
+msgstr "Создать/править CSS-стиль. Оставьте пустым для применения стиля по умолчанию."
+
+#: mystickymenu.php:544
+msgid "CSS style"
+msgstr "CSS-стиль"
+
+#: mystickymenu.php:261
+msgid "Add sticky menu / header to any theme. <br />Simply change 'Sticky Class' to HTML element class desired to be sticky (div id can be used as well)."
+msgstr "Добавить прилипание меню / хэдера для любой темы. <br />Просто измените 'Липкий класс' для класса HTML-элемента, который нужно прилепить (также может быть использован div id)."
+
+#: mystickymenu.php:454
+msgid "Disable sticky menu at scroll down"
+msgstr "Отключить прилипание меню при прокрутке вниз"
+
+#: mystickymenu.php:572
+msgid "Disable at"
+msgstr "Отключить на"
+
+#: mystickymenu.php:642
+msgid "<span class=\"description\">Comma separated list of pages to enable. It should be page name, id or slug. Example: about-us, 1134, Contact Us. Leave blank if you realy want to disable sticky menu for all pages.</span>"
+msgstr "<span class=\"description\">Разделённый запятой список страниц для выключения. Это может быть название публикации, ID или слаг. Например: about-us, 1134, Контакты. Оставьте пустым, если желаете отключить прилипание меню для всех страниц.</span>"
+
+#: mystickymenu.php:656
+msgid "<span class=\"description\">Comma separated list of posts to enable. It should be post name, id or slug. Example: about-us, 1134, Contact Us. Leave blank if you realy want to disable sticky menu for all posts.</span>"
+msgstr "<span class=\"description\">Разделённый запятой список записей для включения. Это может быть название публикации, ID или слаг. Например: about-us, 1134, Контакты. Оставьте пустым, если желаете отключить прилипание меню для всех записей.</span>"
+
+#: mystickymenu.php:433
+msgid "numbers 1-100."
+msgstr "числа 1-100."
+
+#: mystickymenu.php:561
+msgid "Disable CSS style"
+msgstr "Отключить CSS-стиль"
+
+#: mystickymenu.php:361
+msgid "Fade or slide effect"
+msgstr "Эффект затухания или скольжения"
+
+#: mystickymenu.php:398
+msgid "Make visible on Scroll at homepage"
+msgstr "Сделать видимым при прокрутке на главной странице"
+
+#: mystickymenu.php:386
+msgid "Make visible on Scroll"
+msgstr "Сделать видимым при прокрутке"
+
+#: mystickymenu.php:376
+msgid "Disable at Small Screen Sizes"
+msgstr "Отключить на экранах маленьких размеров"
+
+#: mystickymenu.php:417
+msgid "Sticky Transition Time"
+msgstr "Время липкого перехода"
+
+#: mystickymenu.php:432
+msgid "Sticky Opacity"
+msgstr "Липкая непрозрачность"
+
+#: mystickymenu.php:408
+msgid "Sticky Background Color"
+msgstr "Липкий цвет фона"
+
+#: mystickymenu.php:355
+msgid "Sticky z-index"
+msgstr "Липкий z-index"
+
+#: mystickymenu.php:269
+msgid "Sticky Class"
+msgstr "Липкий класс"
+
+#. Plugin Name of the plugin
+msgid "myStickymenu"
+msgstr "myStickymenu"
+
+#: mystickymenu.php:565
+msgid "Use this option if you plan to include CSS Style manually"
+msgstr "Используйте данную опцию, если вы планируете вставлять CSS-стили вручную"
