@@ -1,0 +1,65 @@
+.shared-card-container .shared-card .right .inner-content .first-date a {
+  text-decoration: none;
+  color: inherit; }
+
+#content > .heateorSssClear {
+  padding-top: 0;
+  padding-bottom: 0; }
+
+#content > .heateor_sss_sharing_container {
+  padding-top: 0;
+  padding-bottom: 0; }
+
+#footer {
+  margin-top: 20px; }
+
+.service-padding-container .description-block > p {
+  margin-top: 25px; }
+.service-padding-container .description-block > ul {
+  padding-left: 15px; }
+  .service-padding-container .description-block > ul ul {
+    margin-left: 45px;
+    list-style-type: disc; }
+
+.header .header-nav .lang-picker-container label {
+  color: white; }
+.header .header-nav .lang-picker-container #lang_choice_polylang-2 {
+  font-family: century-gothic, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2543de;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent; }
+
+.header .header-nav .nav-list .nav-list-item {
+  padding-bottom: 8px; }
+
+.header .fixed .header-nav .lang-picker-container #lang_choice_polylang-2 {
+  color: white; }
+
+.services-list-container .services-list a:-webkit-any-link {
+  color: #434343;
+  text-decoration: none;
+  cursor: pointer; }
+
+.overview-container .img-container {
+  flex: 0.7; }
+
+.contact-our-services-container .img-container {
+  flex: 3; }
+
+.description-container a:-webkit-any-link {
+  text-decoration: none; }
+
+.person-contact a:-webkit-any-link {
+  text-decoration: none; }
+
+#footer .copyright {
+  margin-bottom: 20px; }
+
+.service-padding-container ol {
+  font-family: "Open Sans", sans-serif; }
+
+/*# sourceMappingURL=override.css.map */
